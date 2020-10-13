@@ -30,6 +30,7 @@ pipeline {
                 sh 'echo "Build"'
                 sh 'docker image build -t $registry:$BUILD_NUMBER .'
                 sh 'echo "login"'
+		sh 'echo $DOCKER_PWD'
                 sh 'docker login -u mjagiela -p $DOCKER_PWD'
                 sh 'echo "push"'
                 sh 'docker image push $registry:$BUILD_NUMBER'
