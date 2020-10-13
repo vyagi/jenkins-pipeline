@@ -31,7 +31,7 @@ pipeline {
                 sh 'docker image build -t $registry:$BUILD_NUMBER .'
                 sh 'echo "login"'
 		sh 'echo $DOCKER_PWD'
-                sh 'docker login -u mjagiela -p $DOCKER_PWD'
+                sh 'docker login -u mjagiela -p 13f139b3-0d8b-41ec-b03e-ee4f8018f99f'
                 sh 'echo "push"'
                 sh 'docker image push $registry:$BUILD_NUMBER'
                 sh 'echo "remove"'
