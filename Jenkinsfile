@@ -27,9 +27,13 @@ pipeline {
         }
         stage("Build & Push Docker image") {
             steps {
+                sh 'echo "Build"'
                 sh 'docker image build -t $registry:$BUILD_NUMBER .'
+                sh 'echo "login"'
                 sh 'docker login -u mjagiela -p $DOCKER_PWD'
+                sh 'echo "push"'
                 sh 'docker image push $registry:$BUILD_NUMBER'
+                sh 'echo "remove"'
                 sh "docker image rm $registry:$BUILD_NUMBER"
             }
         }
